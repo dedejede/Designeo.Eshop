@@ -1,3 +1,4 @@
+using Designeo.Eshop.Core.Interfaces;
 using Designeo.Eshop.Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,6 +28,7 @@ namespace Designeo.Eshop.Api
                         b=> b.MigrationsAssembly("Infrastructure"));
                 });
 
+            services.AddScoped<IOrderService, OrderService>();
             services.AddControllers(); 
             
             services.AddSwaggerGen(c =>
