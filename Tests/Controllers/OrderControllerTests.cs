@@ -30,8 +30,9 @@ namespace Designeo.Eshop.Tests.Controllers
             var controller = new OrdersController(orderServiceMock.Object);
             var response = await controller.GetOrders();
 
-            Assert.IsInstanceOf<OkResult>(response.Result);
-            Assert.IsInstanceOf<IEnumerable<OrderDto>>(response.Value);
+            Assert.IsInstanceOf<OkObjectResult>(response.Result);
+            var responseObject = ((OkObjectResult) response.Result).Value;
+            Assert.IsInstanceOf<IEnumerable<OrderDto>>(responseObject);
         }
 
         [Test]
